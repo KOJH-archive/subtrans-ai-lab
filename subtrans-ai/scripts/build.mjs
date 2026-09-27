@@ -1,0 +1,10 @@
+import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
+const root = fileURLToPath(new URL("../", import.meta.url));
+const destination = resolve(root, "dist");
+await mkdir(destination, { recursive: true });
+await cp(resolve(root, "extension"), destination, { recursive: true, force: true });
+const manifest = JSON.parse(await readFile(resolve(destination, "manifest.json"), "utf8"));
+await writeFile(resolve(root, "BUILD.json"), JSON.stringify({ version: manifest.version, builtAt: new Date().toISOString(), extensionDirectory: destination }, null, 2));
+console.log(`SubTrans AI ${manifest.version}: ${destination}`);

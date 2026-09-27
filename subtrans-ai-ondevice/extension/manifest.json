@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "SubTrans AI · On-device Lab",
+  "version": "0.4.0",
+  "minimum_chrome_version": "138",
+  "description": "Chrome 내장 AI로 영상 자막과 음성을 기기에서 번역하는 독립 실험판",
+  "permissions": ["activeTab", "scripting", "storage", "offscreen", "tabCapture"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_popup": "popup.html", "default_title": "SubTrans AI · On-device Lab" },
+  "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'" }
+}

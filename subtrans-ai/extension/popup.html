@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SubTrans AI</title><link rel="stylesheet" href="ui.css"></head>
+<body class="popup">
+  <header class="brand"><span class="logo" aria-hidden="true">S<span>ₜ</span></span><div><strong>SubTrans <span class="brand-ai">AI</span></strong><span class="tagline">듣는 순간, 이해하는 자막</span></div><span class="version">0.1</span></header>
+  <main>
+    <section class="status-card"><div class="eyebrow"><span id="status-dot" class="status-dot"></span><span id="phase">시작 준비</span></div><h1>언어의 경계 없이<br>영상을 즐기세요.</h1><p id="status-message" role="status">설정을 불러오고 있습니다.</p><div class="metrics"><div><strong id="latency">—</strong><span>처리 지연</span></div><div><strong id="requests">0</strong><span>API 요청</span></div><div><strong id="cue-count">0</strong><span>번역 자막</span></div></div></section>
+    <form id="settings-form">
+      <div class="section-label"><h2>API 연결</h2><span id="provider-badge" class="pill">키 하나로 시작</span></div>
+      <details id="key-details" class="key-settings" open><summary>API 키 입력 · 관리</summary>
+      <label for="api-key">OpenAI 또는 Gemini API 키</label>
+      <div class="key-input"><input id="api-key" type="password" placeholder="sk-… 또는 AIza…" autocomplete="off" spellcheck="false"><button id="toggle-key" type="button" class="icon-button" aria-label="API 키 표시">보기</button></div>
+      <p class="hint" id="key-hint">키 형식을 확인해 공급자를 자동으로 선택합니다.</p>
+      <label for="provider">공급자</label><select id="provider"><option value="auto">자동 감지</option><option value="openai">OpenAI (GPT)</option><option value="gemini">Google Gemini</option></select>
+      <label class="check"><input id="remember-key" type="checkbox"> 이 브라우저에 키 기억하기</label>
+      <p class="hint">기본은 브라우저 종료 시 키 삭제. 기억하기는 이 기기에 저장하며 별도 암호화하지 않습니다.</p>
+      </details>
+      <div class="two-col"><div><label for="language">영상 언어</label><select id="language"><option value="auto">자동 감지</option><option value="en">영어</option><option value="ja">일본어</option><option value="zh">중국어</option></select></div><div><label for="quality">번역 모드</label><select id="quality"><option value="economy">가성비 · 기본 추천</option><option value="quality">고품질 · 비용 증가</option></select></div></div>
+      <button class="primary start-button" id="start" type="submit">현재 탭 번역 시작 <span aria-hidden="true">↗</span></button>
+      <button class="stop-button" id="stop" type="button" hidden>번역 중지</button>
+      <p class="privacy">시작하면 현재 탭의 오디오가 선택한 API로 전송됩니다.<br>API 사용료는 연결한 계정에 청구됩니다.</p>
+    </form>
+    <div id="feedback" class="feedback" role="status" hidden></div>
+    <footer class="actions"><button id="open-options" type="button">자막 스타일 · 상세 설정</button><button id="export" type="button">SRT 저장</button></footer>
+  </main><script type="module" src="ui.js"></script>
+</body></html>

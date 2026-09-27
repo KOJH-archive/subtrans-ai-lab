@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "SubTrans AI · 실시간 한국어 자막",
+  "version": "0.1.0",
+  "description": "OpenAI 또는 Gemini API 키 하나로 현재 탭의 음성을 한국어 자막으로 번역합니다.",
+  "minimum_chrome_version": "116",
+  "permissions": ["activeTab", "tabCapture", "offscreen", "scripting", "storage"],
+  "host_permissions": ["https://api.openai.com/*", "https://generativelanguage.googleapis.com/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_popup": "popup.html", "default_title": "SubTrans AI" },
+  "options_page": "options.html",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src https://api.openai.com https://generativelanguage.googleapis.com"
+  }
+}

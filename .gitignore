@@ -1,0 +1,26 @@
+# Generated builds and packaged releases
+**/dist/
+**/*.zip
+**/BUILD.json
+**/SubTrans-AI-On-device-Lab-*/
+
+# Test and browser profiles
+**/test-results/
+**/.test-browsers/
+**/.test-extension/
+**/.test-profile*/
+**/.probe-profile*/
+**/.real-model-profile*/
+**/.system-model-profile*/
+**/.native-model-profile*/
+**/.flags-profile*/
+
+# Dependencies and local configuration
+**/node_modules/
+**/.env*
+!**/.env.example
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+

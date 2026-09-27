@@ -1,0 +1,11 @@
+dist/
+.test-extension/
+.test-profile-*/
+.probe-profile-*/
+.real-model-profile/
+.real-model-profile-native/
+.system-model-profile/
+.native-model-profile/
+.flags-profile-*/
+test-results/
+*.zip

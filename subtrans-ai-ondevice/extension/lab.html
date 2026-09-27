@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SubTrans AI · 내장 AI 실험실</title><link rel="stylesheet" href="lab.css"></head>
+<body><main>
+  <header><div class="mark">S</div><div><p class="eyebrow">SUBTRANS AI · ON-DEVICE LAB</p><h1>Chrome 내장 AI 실제 응답 확인</h1><p>이 페이지는 확장프로그램 안에서 실행됩니다. 모델을 처음 내려받을 때 페이지를 열어 두세요.</p></div></header>
+  <section class="card"><h2>1. 텍스트 번역 모델</h2><p>먼저 이 기능으로 한국어 번역 언어팩이 실제로 응답하는지 확인하세요.</p>
+    <label for="language">원문 언어</label><select id="language"><option value="en">영어</option><option value="ja">일본어</option><option value="zh">중국어</option></select>
+    <p id="translationAvailability" class="availability">지원 상태를 확인하는 중입니다.</p>
+    <label for="input">원문</label><textarea id="input" maxlength="500" rows="3">Hello, this is an on-device translation test.</textarea>
+    <button id="translate">Chrome 내장 모델로 번역</button><div id="translationState" class="state" aria-live="polite">아직 실행하지 않았습니다.</div>
+  </section>
+  <section class="card"><h2>2. Gemini Nano 음성 실험</h2><p>전용 GPU에서 오디오 입력을 지원하는 Chrome 빌드일 때만 가능합니다. 10MB 이하의 짧은 영어·일본어 음성 파일을 선택하세요.</p>
+    <label for="audioLanguage">음성 언어</label><select id="audioLanguage"><option value="en">영어</option><option value="ja">일본어</option></select>
+    <p id="audioAvailability" class="availability">지원 상태를 확인하는 중입니다.</p>
+    <button id="prepareAudio">Nano 모델만 미리 준비</button>
+    <label for="audioFile">음성 파일</label><input id="audioFile" type="file" accept="audio/*,.wav,.webm,.mp3,.m4a">
+    <button id="transcribe">Nano로 전사하고 한국어 번역</button><div id="audioState" class="state" aria-live="polite">아직 실행하지 않았습니다.</div>
+  </section>
+  <aside>API 키와 외부 서버를 사용하지 않습니다. Chrome이 모델을 처음 다운로드할 때 인터넷 연결이 필요하며, 추론 중에는 음성과 문장이 기기 밖으로 전송되지 않습니다. 오류가 나면 <code>chrome://on-device-internals</code>에서 모델 상태를 확인하세요.</aside>
+</main><script type="module" src="lab.js"></script></body></html>

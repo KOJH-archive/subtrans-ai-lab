@@ -1,0 +1,13 @@
+{
+  "name": "subtrans-ai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Serverless Chrome subtitle translator with a user-owned OpenAI or Gemini API key",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "check": "node scripts/check.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "engines": { "node": ">=22" }
+}

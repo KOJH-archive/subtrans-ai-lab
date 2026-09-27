@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SubTrans AI · 설정</title><link rel="stylesheet" href="ui.css"></head>
+<body class="options">
+<header class="topbar"><div class="brand"><span class="logo" aria-hidden="true">S<span>ₜ</span></span><div><strong>SubTrans <span class="brand-ai">AI</span></strong><span class="tagline">당신의 영상에, 당신의 자막을.</span></div></div><span class="version">API EDITION · 0.1</span></header>
+<main class="settings-layout">
+  <section class="intro"><div class="eyebrow">MAKE IT YOURS</div><h1>편안하게 읽히는<br>나만의 자막.</h1><p>키 하나를 연결하고, 원하는 모습으로 조정하세요.<br>모델 다운로드나 별도 서버는 필요하지 않습니다.</p>
+    <div class="video-preview" aria-label="자막 스타일 미리보기"><div class="preview-scene"><span class="scene-label">SUBTRANS ORIGINALS</span><div class="scene-orbit"></div><span class="scene-caption">A little more understanding.</span></div><div id="preview-caption"><div id="preview-source">Every new perspective opens a new world.</div><div id="preview-translation">새로운 시선은 새로운 세상을 열어 줍니다.</div></div><div class="preview-controls"><span>▶</span><span class="preview-progress"></span><span>01:24 / 08:32</span></div></div>
+    <p class="hint preview-note">스타일 미리보기 · 실제 API 호출 없음</p>
+    <div class="aside-note"><strong>영상은 그대로, 이해는 더 깊게.</strong><p>자막 스타일은 번역 중에도 바로 바뀝니다. 글꼴은 PC에 설치된 글꼴을 사용하며, 없으면 시스템 글꼴로 표시됩니다.</p></div>
+    <div class="session-summary"><span id="status-dot" class="status-dot"></span><span id="phase">시작 준비</span><p id="status-message">번역 상태를 불러오는 중입니다.</p><div class="metrics"><div><strong id="latency">—</strong><span>처리 지연</span></div><div><strong id="requests">0</strong><span>API 요청</span></div><div><strong id="cue-count">0</strong><span>번역 자막</span></div></div><button id="stop" class="stop-button" type="button" hidden>번역 중지</button></div>
+  </section>
+  <form id="settings-form" class="settings-form">
+    <section class="settings-section"><div class="section-heading"><span class="step">01</span><div><h2>API 연결</h2><p>OpenAI와 Gemini 중 하나만 있으면 됩니다.</p></div><span id="provider-badge" class="pill">연결 전</span></div>
+      <label for="api-key">API 키</label><div class="key-input"><input id="api-key" type="password" placeholder="sk-… 또는 AIza…" autocomplete="off" spellcheck="false"><button id="toggle-key" type="button" class="icon-button" aria-label="API 키 표시">보기</button></div><p id="key-hint" class="hint">키는 웹페이지에 전달되지 않습니다.</p>
+      <div class="two-col"><div><label for="provider">공급자</label><select id="provider"><option value="auto">자동 감지</option><option value="openai">OpenAI (GPT)</option><option value="gemini">Google Gemini</option></select></div><div><label for="quality">번역 모드</label><select id="quality"><option value="economy">가성비 · 기본 추천</option><option value="quality">고품질</option></select></div></div>
+      <p class="model-name" id="model-name">키를 연결하면 모델이 자동으로 선택됩니다.</p>
+      <label class="check"><input id="remember-key" type="checkbox"> 이 브라우저에 키 기억하기</label><p class="hint">끄면 브라우저 종료 시 삭제됩니다. 켜면 이 기기의 확장 저장소에 보관하며 별도 암호화하지 않습니다. Chrome 동기화에는 저장하지 않습니다.</p>
+      <div class="button-row"><button id="verify" type="button" class="secondary">저장하고 연결 확인</button><button id="delete-key" type="button" class="text-button danger">저장한 키 삭제</button></div>
+    </section>
+    <section class="settings-section"><div class="section-heading"><span class="step">02</span><div><h2>자막 스타일</h2><p>변경 사항이 미리보기와 현재 자막에 즉시 반영됩니다.</p></div></div>
+      <div class="two-col"><div><label for="font">글꼴</label><select id="font" data-style="font"><option value="Malgun Gothic">맑은 고딕</option><option value="Pretendard">Pretendard</option><option value="Noto Sans KR">Noto Sans KR</option><option value="Nanum Gothic">나눔고딕</option><option value="sans-serif">시스템 기본</option></select></div><div><label for="effect">텍스트 효과</label><select id="effect" data-style="effect"><option value="shadow">그림자</option><option value="outline">외곽선</option><option value="none">없음</option></select></div></div>
+      <div class="range-label"><label for="size">글자 크기</label><output id="size-value">26px</output></div><input id="size" data-style="size" type="range" min="14" max="48" value="26">
+      <div class="range-label"><label for="position">세로 위치</label><output id="position-value">85%</output></div><input id="position" data-style="position" type="range" min="10" max="95" value="85">
+      <div class="range-label"><label for="opacity">배경 불투명도</label><output id="opacity-value">75%</output></div><input id="opacity" data-style="opacity" type="range" min="0" max="100" value="75">
+      <div class="color-row"><label for="color">글자색 <input id="color" data-style="color" type="color" value="#ffffff"></label><label for="background">배경색 <input id="background" data-style="background" type="color" value="#101820"></label><div><label for="align">정렬</label><select id="align" data-style="align"><option value="center">가운데</option><option value="left">왼쪽</option><option value="right">오른쪽</option></select></div></div>
+      <label class="check"><input id="show-source" data-style="showSource" type="checkbox"> 원문도 함께 표시</label><div class="button-row"><button id="adjust" type="button" class="secondary">영상에서 위치 조정</button><button id="reset-style" type="button" class="text-button">기본 스타일로</button></div>
+    </section>
+    <section class="settings-section"><div class="section-heading"><span class="step">03</span><div><h2>번역과 사용량</h2><p>영상에 맞춰 언어와 처리 간격을 선택하세요.</p></div></div>
+      <div class="two-col"><div><label for="language">영상 언어</label><select id="language"><option value="auto">자동 감지</option><option value="en">영어</option><option value="ja">일본어</option><option value="zh">중국어</option></select></div><div><label for="session-minutes">자동 중지</label><select id="session-minutes"><option value="15">15분 후</option><option value="30">30분 후</option><option value="60">60분 후</option><option value="120">120분 후</option><option value="180">180분 후</option></select></div></div>
+      <div class="two-col"><div><label for="chunk-ms">최대 음성 구간</label><select id="chunk-ms"><option value="2400">2.4초 · 빠른 갱신</option><option value="3600">3.6초 · 균형</option><option value="6000">6초 · 요청 수 절약</option></select></div><div><label for="sensitivity">음성 감지 민감도</label><select id="sensitivity"><option value="normal">보통</option><option value="quiet">높음 · 작은 목소리</option><option value="noisy">낮음 · 소음 있는 영상</option></select></div></div>
+      <p class="hint">발화 구간을 모아 번역하므로 수 초의 지연이 있습니다. 배경 음악도 감지될 수 있습니다. 자동 중지는 금액 한도를 보장하지 않습니다.</p>
+      <label for="glossary">나만의 용어집 <span class="optional">선택 사항</span></label><textarea id="glossary" rows="4" maxlength="4000" placeholder="machine learning = 머신러닝&#10;田中 = 다나카"></textarea><p class="hint">한 줄에 원어 = 한국어 · 최대 40개 · 관련 문맥과 함께 API에 전송됩니다.</p>
+    </section>
+    <div id="feedback" class="feedback" role="status" hidden></div>
+    <div class="save-bar"><button id="export" type="button" class="secondary">자막 SRT 저장</button><button id="save" type="submit" class="primary">설정 저장</button></div>
+    <p class="privacy">음성은 선택한 API 공급자로 직접 전송됩니다. 별도 중계 서버를 사용하지 않습니다.<br>API 이용료는 본인 계정에 청구됩니다. ChatGPT·Gemini 구독과 API 요금은 별개입니다.</p>
+  </form>
+</main><script type="module" src="ui.js"></script></body></html>

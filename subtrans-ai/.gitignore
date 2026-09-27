@@ -1,0 +1,10 @@
+.test-browsers/
+.test-profile*/
+.test-extension/
+node_modules/
+test-results/
+dist/
+BUILD.json
+*.zip
+.env*
+!.env.example
